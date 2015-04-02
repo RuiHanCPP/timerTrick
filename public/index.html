@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>timerTest</title>
+  <link href="css/bootstrap-2.3.2.min.css" rel="stylesheet">
+  <script src="js/jquery-1.11.2.min.js"></script>
+  <script src="js/bootstrap-2.3.2.min.js"></script>
+  <script type="text/javascript" src="http://10.238.41.68:3000/socket.io/socket.io.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-route.js"></script>
+  
+  <script src="js/bower_components/angular-socket-io/socket.js"></script>
+  <script src="js/socketClientApp.js"></script>
+
+</head>
+
+<body ng-app="timerGame">
+
+	<div class="container" ng-controller="appController">
+		<br>
+		<h1>Timer Game</h1>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td>Time</td>
+					<td>Owner</td>
+				</tr>
+				<tr>
+					<td>{{showTime}}</td>
+					<td>{{owner}}</td>
+
+				</tr>
+				<tr>
+					<button type="button" ng-click="resetTime()" class="btn btn-success pull-right">
+						On me!
+					</button>
+				</tr>
+			</tbody>
+		</table>
+
+		<br>
+		<button type="button" ng-click="startGame()" class="btn btn-primary pull-right">
+			Start
+		</button>
+	</div>
+</body>
+
+</html>
