@@ -46,13 +46,13 @@ app.controller("appController", function($scope, socket, $interval, second) {
 		// for timer sync test, not junk!!
 		console.log(Date.now() - start);
 
+		$scope.showTime = 0;
+		timeDiff = 0;
 		if ($scope.owner == 'You') {
 			alert("You win!");
 		} else {
 			alert("You lose!");
 		}
-		$scope.showTime = 0;
-		timeDiff = 0;
 	});
 
 	$scope.resetTime = function() {
