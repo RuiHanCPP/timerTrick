@@ -8,35 +8,26 @@ var io = socketio.listen(server);
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(multer()); // for parsing multipart/form-data
+// for parsing application/json
+app.use(bodyParser.json()); 
 
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+// for parsing multipart/form-data
+app.use(multer()); 
+
+// use dir
 app.use(express.static(__dirname + '/public'));
 
 var startTime = 0;
 var curOwner = 0;
 var gameIsRunning = false;
+var timerRef;
 
-/*
-app.get("/game", function(req, res) {
-	var showTime = 11 - (Math.floor(Date.now() / 1000) - startTime);
-	res.json({serverTime: new Date().getTime(), showTime: showTime, ip: curOwner});
-});
-
-app.put("/game", function(req, res) {
-	var showTime = 11 - (Math.floor(Date.now() / 1000) - startTime);
-	if (showTime > 0) {
-		curOwner = req.ip;
-		res.json({serverTime: new Date().getTime(), showTime: showTime, ip: curOwner});
-	}
-});
-*/
+console.log("Server starts!");
 
 io.on('connection', function(socket) {
-
-	// TODO
-	// how to constantly check time and see if the time is up??
 
 	socket.on('resetTime', function() {
 
@@ -54,13 +45,34 @@ io.on('connection', function(socket) {
 				showTime: 10,
 				ip: "You"
 			});
+			clearTimeout(timerRef);
+			timerRef = setTimeout(timerCheck, 10000);
 		}
 	});
 
+	var timerCheck = function() {
+
+		if (!gameIsRunning) {
+			return;
+		}
+		if (Date.now() - startTime < 10000) {
+			return;
+		}
+		gameIsRunning = false;
+
+		socket.broadcast.emit('gameOver', {});
+		socket.emit('gameOver', {});
+
+		// for time sync test only, not junk
+		console.log(Date.now() - startTime);
+
+		console.log("Game over! The winner is " + curOwner);
+	}
+
 	socket.on('startGame', function() {
 		
-		//if (!gameIsRunning) {
-			startTime = Math.floor(Date.now() / 1000);
+		if (!gameIsRunning) {
+			startTime = Math.floor(Date.now());
 
 			console.log('startGame' + socket.request.connection.remoteAddress);
 
@@ -75,7 +87,8 @@ io.on('connection', function(socket) {
 				ip: curOwner
 			});
 			gameIsRunning = true;
-		//}
+			timerRef = setTimeout(timerCheck, 10000);
+		}
 	});
 	
 });
