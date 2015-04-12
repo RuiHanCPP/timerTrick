@@ -92,6 +92,8 @@ app.controller("appController", function($scope, socket, $timeout, $http, second
       }
       alert("You lose! " + owner + " won the game!");
     }
+
+    window.location.href = '/';
   });
 
   $scope.resetTime = function() {
