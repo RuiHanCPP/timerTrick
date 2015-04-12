@@ -88,13 +88,13 @@ app.controller("appController", function($scope, socket, $timeout, $http, second
 
 	$scope.resetTime = function() {
 
-		socket.emit('resetTime', function({username: $cookieStore.get("myUsername")}) {});
+		socket.emit('resetTime', {username: $cookieStore.get("myUsername")});
 		stopTimer();
 	}
 
 	$scope.startGame = function() {
 
-		socket.emit('startGame', function({username: $cookieStore.get("myUsername")}) {});
+		socket.emit('startGame', {username: $cookieStore.get("myUsername")});
 	}
 
 	function goTimer() {

@@ -120,12 +120,12 @@ io.on('connection', function(socket) {
         socket.broadcast.emit('adjustTime', {
           serverTime: Date.now(),
           showTime: 10,
-          owner: User.userList[curOwner]
+          owner: curOwner
         });
         socket.emit('adjustTime', {
           serverTime: Date.now(),
           showTime: 10,
-          owner: User.userList[curOwner]
+          owner: curOwner
         });
         clearTimeout(timerRef);
         timerRef = setTimeout(timerCheck, 10000);
@@ -145,13 +145,13 @@ io.on('connection', function(socket) {
     }
     gameIsRunning = false;
 
-    socket.broadcast.emit('gameOver', {owner: User.userList[curOwner]});
-    socket.emit('gameOver', {owner: User.userList[curOwner]});
+    socket.broadcast.emit('gameOver', {owner: curOwner});
+    socket.emit('gameOver', {owner: curOwner});
 
     // for time sync test only, not junk
     console.log(Date.now() - startTime);
 
-    console.log("Game over! The winner is " + User.userList[curOwner]);
+    console.log("Game over! The winner is " + curOwner);
   }
 
   socket.on('startGame', function(response) {
@@ -166,12 +166,12 @@ io.on('connection', function(socket) {
       socket.broadcast.emit('adjustTime', {
         serverTime: Date.now(),
         showTime: 10,
-        owner: User.userList[curOwner]
+        owner: curOwner
       });
       socket.emit('adjustTime', {
         serverTime: Date.now(),
         showTime: 10,
-        owner: User.userList[curOwner]
+        owner: curOwner
       });
       gameIsRunning = true;
       timerRef = setTimeout(timerCheck, 10000);
