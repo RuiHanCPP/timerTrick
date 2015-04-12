@@ -4,7 +4,14 @@ var User = require('../module/user');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  	res.render('game');
+  res.render('game', {
+    game: {id: 10},
+    item: {
+      title: 'Gift card',
+      price: 50,
+      image: ''
+    }
+  });
 });
 
 router.put('/user', function(req, res) {

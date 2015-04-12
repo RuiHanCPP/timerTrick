@@ -1,0 +1,101 @@
+body {
+  background-image: url(/images/bg.png);
+  padding-bottom: 100px;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-default .navbar-toggle {
+  border: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.item-image {
+  max-height: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+.item-title {
+  text-align: center;
+}
+
+.fix-bottom {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 100;
+}
+
+.bet-panel {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.bet-panel:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.75;
+  background-color: #909090;
+}
+
+.bet-panel .col-xs-6:nth-child(1) {
+  border-right: 1px solid #fff;
+}
+
+.bet-panel .col-xs-6:nth-child(2) {
+  border-left: 1px solid #fff;
+}
+
+.btn-bet {
+  cursor: pointer;
+  -webkit-transition: color 1s ease;
+}
+
+.btn-bet.active {
+  -webkit-transition: color 0.1s ease;
+  color: #f9af4d;
+}
+
+.btn-bet .fa-gavel {
+  top: 13px;
+  position: relative;
+}
+
+.btn-bet .fa-gavel:before {
+  position: absolute;
+  top: -13px;
+  left: -3px;
+}
+
+/* btn */
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:hover {
+  background-color: #f0ad4e;
+  border-color: #F2AB2A;
+}
+
+.btn-primary:hover {
+  background-color: #e67e22;
+}
+
+/* general */
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mr10 { margin-right: 10px; }
