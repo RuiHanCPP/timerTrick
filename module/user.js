@@ -17,6 +17,8 @@ var User = module.exports = {
 	},
 
 	resetBid: function() {
-		userList = {};
+		for (var key in this.userList) {
+			this.userList[key] = 3;
+		}
 	}
 }
