@@ -14,7 +14,7 @@ var User = require('../module/user');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8080');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 /**
@@ -108,6 +108,8 @@ var timerRef;
 console.log("Server starts!");
 
 io.on('connection', function(socket) {
+
+  socket.broadcast.emit('newUser', { users: Object.keys(User.userList) });
 
   socket.on('resetTime', function(response) {
 

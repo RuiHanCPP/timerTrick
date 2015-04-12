@@ -2,7 +2,7 @@ var app = angular.module('timerGame', ['btford.socket-io', 'ngCookies']);
 
 app.factory('socket', function(socketFactory) {
 
-  var myIoSocket = io.connect('http://localhost:3000');
+  var myIoSocket = io.connect('http://ec2-54-69-163-23.us-west-2.compute.amazonaws.com');
   //var myIoSocket = io.connect('http://192.168.1.2:3000');
 
   mySocket = socketFactory({
@@ -49,6 +49,11 @@ app.controller("appController", function($scope, socket, $timeout, $http, second
       $scope.hasChance = false;
     }
   });
+
+  socket.on('newUser', function (response) {
+    console.log(response);
+    $scope.users = response.users;
+  })
 
   socket.on('adjustTime', function (response) {
     console.log(response);
