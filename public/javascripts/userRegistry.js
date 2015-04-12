@@ -21,7 +21,7 @@ app.controller("appController", function($scope, $http, $location, $cookieStore)
 			console.log(response);
 			if (response) {
 				$cookieStore.put('myUsername', $scope.username);
-				window.location.href = '/game';
+				window.location.href = '/games';
 			} else {
 				$scope.correct = false;
 			}
