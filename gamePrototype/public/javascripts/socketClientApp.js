@@ -3,7 +3,7 @@ var app = angular.module('timerGame', ['btford.socket-io', 'ngCookies']);
 app.factory('socket', function(socketFactory) {
 
 	// var myIoSocket = io.connect('http://somesite:port');
-	var myIoSocket = io.connect('http://10.20.7.85:3000');
+	var myIoSocket = io.connect('http://localhost:3000');
 
   	mySocket = socketFactory({
     	ioSocket: myIoSocket
@@ -51,7 +51,7 @@ app.controller("appController", function($scope, socket, $timeout, $http, second
 
   		console.log(response);
 		if (response.showTime <= 0) {
-			alert("Winner is " + response.ip);
+			alert("Winner is " + response.owner);
 		} 
 
 		if (!$scope.started) {

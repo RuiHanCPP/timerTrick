@@ -109,14 +109,14 @@ console.log("Server starts!");
 
 io.on('connection', function(socket) {
 
-  socket.on('resetTime', function() {
+  socket.on('resetTime', function(response) {
 
     if (gameIsRunning) {
       console.log('resetTime' + socket.request.connection.remoteAddress);
 
-      curOwner = socket.request.connection.remoteAddress;
+      curOwner = response.username;
 
-      if (User.makeBid(curOwner)) {
+      if (User.userList[curOwner]) {
         socket.broadcast.emit('adjustTime', {
           serverTime: Date.now(),
           showTime: 10,
@@ -154,10 +154,12 @@ io.on('connection', function(socket) {
     console.log("Game over! The winner is " + User.userList[curOwner]);
   }
 
-  socket.on('startGame', function() {
+  socket.on('startGame', function(response) {
     
     if (!gameIsRunning) {
       startTime = Math.floor(Date.now());
+
+      curOwner = response.username;
 
       console.log('startGame' + socket.request.connection.remoteAddress);
 
