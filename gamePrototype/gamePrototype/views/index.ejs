@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link href="stylesheets/bootstrap-2.3.2.min.css" rel="stylesheet">
+    <script src="javascripts/jquery-1.11.2.min.js"></script>
+    <script src="javascripts/angular.min.js"></script>
+    <script src="javascripts/angular-route.js"></script>
+    <script src="javascripts/userRegistry.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
+  </head>
+
+  <body ng-app='userRegister' ng-controller="appController">
+
+    <br>
+  	<div class="container">
+
+      <h1>Welcome to Ahchoo!</h1>
+    
+  		Your username: <input type="text" ng-model="username" placeholder="username">
+
+      <div ng-hide="!incomplete">The length of the username should be longer than 2 characters</div><br>
+
+      <div ng-hide="correct">There is duplicate in username, please come up with a new one</div>
+
+      <hr>
+      <button class="btn btn-success" ng-disabled="incomplete" ng-click="submitUsername()">
+        <span class="glyphicon glyphicon-user"></span>Submit</button>
+    </div>
+  </body>
+
+</html>
