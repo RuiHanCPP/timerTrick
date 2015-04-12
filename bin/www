@@ -116,7 +116,7 @@ io.on('connection', function(socket) {
 
       curOwner = response.username;
 
-      if (User.userList[curOwner]) {
+      if (User.makeBid(curOwner) > 0) {
         socket.broadcast.emit('adjustTime', {
           serverTime: Date.now(),
           showTime: 10,

@@ -21,8 +21,8 @@
         <div class="col-xs-12">
           <div class="alert alert-info" role="alert">
             <h4>For the sake of continuity of our game and your prize, plz don't refresh the page</h4>
-	    <div>Each person has 3 chances to hit, and get hold of the prize(temporarily), when the timer goes to 0, whoever hold the ground wins!</div>
-	    <div>Each hit will result in the timer backs to 10 sec. And if when the timer goes 0 but no one holds the prize, the prize will be gone!!</div>
+      	    <div>Each person has 3 chances to hit, and get hold of the prize(temporarily), when the timer goes to 0, whoever hold the ground wins!</div>
+      	    <div>Each hit will result in the timer backs to 10 sec. And if when the timer goes 0 but no one holds the prize, the prize will be gone!!</div>
           </div>
         </div>
       </div>
@@ -31,11 +31,10 @@
         <div class="col-xs-12">
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="user in users">
-              <span ng-bind="user.name"></span>
-              <!-- To do -->
-              <!-- <span class="pull-right" ng-if="currentOwner() && user.id == currentOwner())"> -->
-              <!-- <i class="fa fa-flag-checkered"></i> -->
-              <!-- </span> -->
+              <span ng-bind="user"></span>
+              <span class="pull-right" ng-if="owner && user == owner)">
+              	<i class="fa fa-flag-checkered"></i>
+              </span>
             </li>
           </ul>
         </div>
@@ -48,14 +47,14 @@
           </div>
 
           <div class="col-xs-6">
-            <div class="btn-bet" ng-click="resetTime()">
+            <div class="btn-bet" ng-click="resetTime()" ng-disable="hasChance">
               <i class="fa fa-gavel mr10">
                 <span ng-if="chances == 3"> ... </span>
                 <span ng-if="chances == 2"> ..&nbsp;</span>
                 <span ng-if="chances == 1"> .&nbsp;&nbsp;</span>
                 <span ng-if="chances == 0"> &nbsp;&nbsp;&nbsp;</span>
               </i>
-              Mine!
+              Hit!
             </div>
           </div>
         </div>

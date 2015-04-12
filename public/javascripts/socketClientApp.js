@@ -2,8 +2,8 @@ var app = angular.module('timerGame', ['btford.socket-io', 'ngCookies']);
 
 app.factory('socket', function(socketFactory) {
 
-  // var myIoSocket = io.connect('http://somesite:port');
-  var myIoSocket = io.connect('http://192.168.1.2:3000');
+  var myIoSocket = io.connect('http://localhost:3000');
+  //var myIoSocket = io.connect('http://192.168.1.2:3000');
 
   mySocket = socketFactory({
     ioSocket: myIoSocket
@@ -16,10 +16,7 @@ app.constant('second', 100);
 
 app.controller("appController", function($scope, socket, $timeout, $http, second, $cookieStore) {
 
-  $scope.users = [
-    {name: 'Han Rui'},
-    {name: 'Haha'}
-  ]
+  $scope.users;
 
   var start = Date.now();
   var stop;
@@ -42,6 +39,7 @@ app.controller("appController", function($scope, socket, $timeout, $http, second
     $scope.username = response.user;
     $scope.chances = response.chances;
     $scope.isAdmin = response.isAdmin;
+    $scope.users = response.users;
   });
 
   $scope.$watch('chances', function() {
@@ -65,6 +63,11 @@ app.controller("appController", function($scope, socket, $timeout, $http, second
 
     $scope.showTime = response.showTime;
     $scope.owner = response.owner;
+
+    if ($scope.owner === $scope.username) {
+      $scope.chances -= 1;
+    }
+
     stopTimer();
     start = Date.now();
     goTimer();
@@ -85,7 +88,7 @@ app.controller("appController", function($scope, socket, $timeout, $http, second
     } else {
       var owner = response.owner;
       if (response.owner === undefined) {
-	owner = 'Nobody';
+	      owner = 'Nobody';
       }
       alert("You lose! " + owner + " won the game!");
     }
