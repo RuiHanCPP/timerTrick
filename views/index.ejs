@@ -17,7 +17,7 @@
             </div>
 
             <div class="form-group">
-              <button class="btn btn-primary btn-block" ng-click="submitUsername()">Login to Ahchoo</button>
+              <button class="btn btn-primary btn-block" ng-click="submitUsername()" ng-disabled="incomplete">Login to Ahchoo</button>
             </div>
 
             <div class="alert alert-success" role="alert" ng-show="incomplete">

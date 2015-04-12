@@ -93,17 +93,18 @@ app.controller("appController", function($scope, socket, $timeout, $http, second
       alert("You lose! " + owner + " won the game!");
     }
 
-    window.location.href = '/';
+    window.location.href = '/games';
   });
 
   $scope.resetTime = function() {
-    socket.emit('resetTime', {username: $cookieStore.get("myUsername")});
-    stopTimer();
+    if ($scope.hasChance) {
+      socket.emit('resetTime', {username: $cookieStore.get("myUsername")});
+      stopTimer();
+    }
   }
 
   $scope.startGame = function() {
-
-    socket.emit('startGame', {username: $cookieStore.get("myUsername")});
+    socket.emit('startGame', {username: undefined});
   }
 
   function goTimer() {

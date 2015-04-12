@@ -152,6 +152,7 @@ io.on('connection', function(socket) {
     console.log(Date.now() - startTime);
 
     console.log("Game over! The winner is " + curOwner);
+    User.resetBid();
   }
 
   socket.on('startGame', function(response) {
@@ -159,7 +160,7 @@ io.on('connection', function(socket) {
     if (!gameIsRunning) {
       startTime = Math.floor(Date.now());
 
-      curOwner = response.username;
+      curOwner = undefined;
 
       console.log('startGame' + socket.request.connection.remoteAddress);
 

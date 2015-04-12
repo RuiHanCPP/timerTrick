@@ -1,0 +1,24 @@
+<html>
+  <% include header %>
+
+  <body ng-app="gameCatagories" ng-controller="appController">
+    <div class="container-fluid">
+      <div id="game-id" data="<%= game.id %>"></div>
+
+      <div class="row mb10">
+        <div class="col-xs-4">
+          <!-- <img class="img-thumbnail" src="<%= item.image %>" height="75"> -->
+        </div>
+        <div class="col-xs-8">
+          <h4><%= item.title %></h4>
+          <h4><i class="fa fa-dollar"></i> <%= item.price %></h4>
+        </div>
+        <br>
+        <div class="btn-bet" ng-click="chooseGame()">Buy one and win one!</div>
+        <br>
+        <div class="alert alert-info" role="alert">You don't need to pay anthing here lol</div>
+      </div>
+    </div>
+  </body>
+
+</html>

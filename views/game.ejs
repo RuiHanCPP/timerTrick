@@ -20,20 +20,19 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="alert alert-info" role="alert">
-            <h4>For the sake of continuity of our game and your prize, plz don't refresh the page</h4>
-      	    <div>Each person has 3 chances to hit, and get hold of the prize(temporarily), when the timer goes to 0, whoever hold the ground wins!</div>
-      	    <div>Each hit will result in the timer backs to 10 sec. And if when the timer goes 0 but no one holds the prize, the prize will be gone!!</div>
+            <h4>Plz don't refresh the page, if you still want to win lol</h4>
+      	    <div>Each person has 3 chances, and get hold of the prize(temporarily), when the timer goes to 0, whoever hold the ground wins!</div>
+      	    <div>Each hit will reset the timer to 10 sec.</div>
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-xs-12">
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="user in users">
               <span ng-bind="user"></span>
-              <span class="pull-right" ng-if="owner && user == owner)">
-              	<i class="fa fa-flag-checkered"></i>
+              <span class="pull-right" ng-show="user === owner">
+              	<i class="fa fa-flag-checkered" ng-show="user === owner"></i>
               </span>
             </li>
           </ul>
@@ -47,12 +46,12 @@
           </div>
 
           <div class="col-xs-6">
-            <div class="btn-bet" ng-click="resetTime()" ng-disable="hasChance">
+            <div class="btn-bet" ng-click="resetTime()" ng-disabled="!hasChance">
               <i class="fa fa-gavel mr10">
                 <span ng-if="chances == 3"> ... </span>
                 <span ng-if="chances == 2"> ..&nbsp;</span>
                 <span ng-if="chances == 1"> .&nbsp;&nbsp;</span>
-                <span ng-if="chances == 0"> &nbsp;&nbsp;&nbsp;</span>
+                <span ng-if="chances <= 0"> &nbsp;&nbsp;&nbsp;</span>
               </i>
               Hit!
             </div>
