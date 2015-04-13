@@ -21,8 +21,8 @@
         <div class="col-xs-12">
           <div class="alert alert-info" role="alert">
             <h4>Plz don't refresh the page, if you still want to win lol</h4>
-      	    <div>Each person has 3 chances, and get hold of the prize(temporarily), when the timer goes to 0, whoever hold the ground wins!</div>
-      	    <div>Each hit will reset the timer to 10 sec.</div>
+      	    <div>You have 3 chances(represented by the number of . under Hit button) to hold the prize(temporarily), when the timer goes 0, whoever hold the ground wins! (if any)</div>
+      	    <div>Each hit will reset the timer back to 10 sec.</div>
           </div>
         </div>
       </div>
@@ -48,9 +48,9 @@
           <div class="col-xs-6">
             <div class="btn-bet" ng-click="resetTime()" ng-disabled="!hasChance || started">
               <i class="fa fa-gavel mr10">
-                <span ng-if="chances == 3"> *** </span>
-                <span ng-if="chances == 2"> **&nbsp;</span>
-                <span ng-if="chances == 1"> *&nbsp;&nbsp;</span>
+                <span ng-if="chances == 3"> ... </span>
+                <span ng-if="chances == 2"> ..&nbsp;</span>
+                <span ng-if="chances == 1"> .&nbsp;&nbsp;</span>
                 <span ng-if="chances <= 0"> &nbsp;&nbsp;&nbsp;</span>
               </i>
               Hit!
