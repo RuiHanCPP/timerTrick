@@ -3,21 +3,21 @@
 
   <body ng-app="gameCatagories" ng-controller="appController">
     <div class="container-fluid">
-      <div id="game-id" data="<%= game.id %>"></div>
+      <div class="row" style="margin-top: 100px">
+        <div class="col-sm-offset-3 col-sm-6">
+          <div role="form">
+            <div class="form-group input-group">
+                <h4><%= item.title %></h4>
+                <h4><i class="fa fa-dollar"></i> <%= item.price %></h4>
+            </div>
 
-      <div class="row mb10">
-        <!-- <div class="col-xs-4">
-          <img class="img-thumbnail" src="<%= item.image %>" height="75">
-        </div> -->
-        <div class="col-xs-8">
-          <h4><%= item.title %></h4>
-          <h4><i class="fa fa-dollar"></i> <%= item.price %></h4>
-          <button class="btn btn-primary" ng-click="chooseGame()">Buy one and win one!</button>
+            <div class="form-group">
+              <button class="btn btn-primary" ng-click="chooseGame()">Buy one and win one!</button>
+            </div>
+          </div>
+          <div class="alert alert-info" role="alert">You don't need to pay anthing here lol</div>
         </div>
-        <br>
-        <br>
       </div>
-      <div class="alert alert-info" role="alert">You don't need to pay anthing here lol</div>
     </div>
   </body>
 
