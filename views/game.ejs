@@ -46,11 +46,11 @@
           </div>
 
           <div class="col-xs-6">
-            <div class="btn-bet" ng-click="resetTime()" ng-disabled="!hasChance">
+            <div class="btn-bet" ng-click="resetTime()" ng-disabled="!hasChance || started">
               <i class="fa fa-gavel mr10">
-                <span ng-if="chances == 3"> ... </span>
-                <span ng-if="chances == 2"> ..&nbsp;</span>
-                <span ng-if="chances == 1"> .&nbsp;&nbsp;</span>
+                <span ng-if="chances == 3"> *** </span>
+                <span ng-if="chances == 2"> **&nbsp;</span>
+                <span ng-if="chances == 1"> *&nbsp;&nbsp;</span>
                 <span ng-if="chances <= 0"> &nbsp;&nbsp;&nbsp;</span>
               </i>
               Hit!
