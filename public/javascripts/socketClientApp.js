@@ -2,7 +2,7 @@ var app = angular.module('timerGame', ['btford.socket-io', 'ngCookies']);
 
 app.factory('socket', function(socketFactory) {
 
-  var myIoSocket = io.connect('http://ec2-54-69-163-23.us-west-2.compute.amazonaws.com');
+  var myIoSocket = io.connect('http://ec2-52-5-206-96.compute-1.amazonaws.com');
   //var myIoSocket = io.connect('http://192.168.1.2:3000');
 
   mySocket = socketFactory({
